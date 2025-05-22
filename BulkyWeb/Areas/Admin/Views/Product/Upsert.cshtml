@@ -1,0 +1,124 @@
+﻿@model ProductVM
+
+<div class="card shadow border-0 my-4">
+	<div class="card card-header bg-secondary bg-gradient ml-0 py-3">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h2 class="text-white py-2">@(Model.Product.CategoryId != 0 ? "Update" : "Create") Product</h2>
+			</div>
+		</div>
+	</div>
+	<div class="card-body p-4">
+		<form method="post" class="row" enctype="multipart/form-data">
+			<input asp-for="Product.productID" hidden />
+			<input asp-for="Product.ImageUrl" hidden />
+			<div class="row">
+				<div class="col-10">
+					<div class="border p-3">
+						@* <div asp-validation-summary="All"></div> *@
+						<div class="form-floating py-2 col-12">
+							<input asp-for="Product.titleProduct" type="text" class="form-control border-0 shadow" />
+							<label asp-for="Product.titleProduct" class="ms-2"></label>
+							<span asp-validation-for="Product.titleProduct" class="text-danger"></span>
+						</div>
+						<div class=" py-2 col-12">
+							<textarea asp-for="Product.productDecsciption" type="text" class="form-control border-0 shadow"></textarea>
+							<label asp-for="Product.productDecsciption" class="ms-2 text-muted"></label>
+
+						</div>
+						<div class="form-floating py-2 col-12">
+							<input asp-for="Product.ISBN" type="text" class="form-control border-0 shadow" />
+							<label asp-for="Product.ISBN" class="ms-2"></label>
+							<span asp-validation-for="Product.ISBN" class="text-danger"></span>
+						</div>
+						<div class="form-floating py-2 col-12">
+							<input asp-for="Product.Author" type="text" class="form-control border-0 shadow" />
+							<label asp-for="Product.Author" class="ms-2"></label>
+							<span asp-validation-for="Product.Author" class="text-danger"></span>
+
+						</div><div class="form-floating py-2 col-12">
+							<input asp-for="Product.listPrice" type="text" class="form-control border-0 shadow" />
+							<label asp-for="Product.listPrice" class="ms-2"></label>
+							<span asp-validation-for="Product.listPrice" class="text-danger"></span>
+						</div>
+						<div class="form-floating py-2 col-12">
+							<input asp-for="Product.priceProduct" type="text" class="form-control border-0 shadow" />
+							<label asp-for="Product.priceProduct" class="ms-2"></label>
+							<span asp-validation-for="Product.priceProduct" class="text-danger"></span>
+
+						</div>
+						<div class="form-floating py-2 col-12">
+							<input asp-for="Product.priceProductFor50" type="text" class="form-control border-0 shadow" />
+							<label asp-for="Product.priceProductFor50" class="ms-2"></label>
+							<span asp-validation-for="Product.priceProductFor50" class="text-danger"></span>
+						</div>
+						<div class="form-floating py-2 col-12">
+							<input asp-for="Product.priceProductFor100" type="text" class="form-control border-0 shadow" />
+							<label asp-for="Product.priceProductFor100" class="ms-2"></label>
+							<span asp-validation-for="Product.priceProductFor100" class="text-danger"></span>
+						</div>
+						<div class="form-floating py-2 col-12">
+							<select asp-items="@Model.CategoryList" asp-for="Product.CategoryId" class="form-control border-0 shadow">
+								<option disabled selected>--Select Category--</option>
+							</select>
+							<label class="ms-2">Chọn danh mục</label>
+							<span asp-validation-for="Product.priceProductFor100" class="text-danger"></span>
+						</div>
+						<div class="form-floating py-2 col-12">
+							<input type="file" name="file" class="form-control border-0 shadow" />
+							<label asp-for="Product.ImageUrl" class="ms-2"></label>
+							<span asp-validation-for="Product.ImageUrl" class="text-danger"></span>
+						</div>
+						<div class="row pt-2">
+							<div class="col-6 col-md-3">
+								@if (Model.Product.productID != 0)
+								{
+									<button type="submit" class="btn btn-primary form-control">Update</button>
+								}
+								else
+								{
+									<button type="submit" class="btn btn-primary form-control">Create</button>
+								}
+							</div>
+							<div class="col-6 col-md-3">
+								<a asp-controller="Product" asp-action="Index" class="btn btn-outline-primary form-control">
+									Back to List
+								</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-2">
+					<img src="@Model.Product.ImageUrl" width="100%" style="border-radius: 5px; border: 1px solid #bbb9b9"/>
+				</div>
+			</div>
+		</form>
+
+	</div>
+</div>
+@section Scripts{
+	<script>
+		tinymce.init({
+		  selector: 'textarea',
+		  plugins: [
+			// Core editing features
+			'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
+			// Your account includes a free trial of TinyMCE premium features
+			// Try the most popular premium features until Jun 3, 2025:
+			'checklist', 'mediaembed', 'casechange', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'ai', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown','importword', 'exportword', 'exportpdf'
+		  ],
+		  toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+		  tinycomments_mode: 'embedded',
+		  tinycomments_author: 'Author name',
+		  mergetags_list: [
+			{ value: 'First.Name', title: 'First Name' },
+			{ value: 'Email', title: 'Email' },
+		  ],
+		  ai_request: (request, respondWith) => respondWith.string(() => Promise.reject('See docs to implement AI Assistant')),
+		});
+	</script>
+	@{
+		<partial name="_ValidationScriptsPartial"/>
+	}
+}
