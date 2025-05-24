@@ -78,8 +78,14 @@
                         <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select" aria-required="true">
                             <option disabled selected>- Select role -</option>
                         </select>
-                        <span asp-validation-for="Input.Role" class="text-danger"></span>
                     </div>
+
+                    <div class="form-floating mb-3 col-md-6" style="display: none" id="companyDropdown">
+                        <select asp-for="Input.CompanyId" asp-items="@Model.Input.CompanyList" class="form-select" aria-required="true">
+                            <option disabled selected>- Select Company -</option>
+                        </select>
+                    </div>
+
                     <div class="col-12">
                         <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
                     </div>
@@ -123,4 +129,16 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            $('#Input_Role').change(function () {
+                var selectedRole = $('#Input_Role option:selected').text().trim();
+                if (selectedRole === 'Company') {
+                    $('#companyDropdown').show();
+                } else {
+                    $('#companyDropdown').hide();
+                }
+            });
+        });
+    </script>
 }

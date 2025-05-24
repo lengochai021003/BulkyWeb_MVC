@@ -7,8 +7,8 @@ using BulkyBook.Models;
 
 namespace BulkyBook.DataAccess.Repository.IRepository
 {
-    public interface ICategoryRepository : IRepository<Category>
+    public interface ICompanyRepository : IRepository<Company>
     {
-        void Update(Category obk);
+        void Update(Company obk);
     }
 }

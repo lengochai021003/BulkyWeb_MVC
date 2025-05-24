@@ -10,7 +10,7 @@ namespace BulkyBook.Utility
     {
         public const string Role_Cust = "Customer";
 
-        public const string Role_Comp = "Company";
+        public const string Role_Comp = "Product";
 
         public const string Role_Admin = "Admin";
 

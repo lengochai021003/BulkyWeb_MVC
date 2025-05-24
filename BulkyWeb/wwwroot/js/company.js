@@ -5,21 +5,21 @@ $(function () {
 });
 function loadDataTable() {
     dataTable = $('#tblData').DataTable({
-        "ajax": { url: '/admin/product/getall' },
+        "ajax": { url: '/admin/company/getall' },
         "pageLength": 5,
         "columns": [
-            { data: 'productID', "width": "3%" },
-            { data: 'titleProduct', "width": "15%" },
-            { data: 'author', "width": "15%" },
-            { data: 'isbn', "width": "15%" },
-            { data: 'listPrice', "width": "3%" },
-            { data: 'category.categoryName', "width": "15%" },
+            { data: 'id', "width": "3%" },
+            { data: 'name', "width": "15%" },
+            { data: 'streetAddress', "width": "15%" },
+            { data: 'city', "width": "15%" },
+            { data: 'state', "width": "3%" },
+            { data: 'phoneNumber', "width": "15%" },
             {
-                data: 'productID',
+                data: 'id',
                 "render": function (data) {
                     return `<div class = "w-75 btn-group" role="group"> 
-                        <a href="/admin/product/upsert?id=${data}" class="btn btn-primary "> <i class="bi bi-pencil-square"></i></a>
-                        <a onClick=Delete('/admin/product/delete/${data}') class="btn btn-danger "> <i class="bi bi-trash-fill"></i></a>
+                        <a href="/admin/company/upsert?id=${data}" class="btn btn-primary 2"><i class="bi bi-pencil-square"></i></a>
+                        <a onClick=Delete('/admin/company/delete/${data}') class="btn btn-danger"> <i class="bi bi-trash-fill"></i></a>
                     </div>`
                 },
                 "width": "15%" 
