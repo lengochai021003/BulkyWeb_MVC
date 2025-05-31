@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor httpContextAccessor
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -26,11 +30,12 @@
                         <li class="nav-item">
                             <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+
                         @if (User.IsInRole(SD.Role_Admin))
                         {
+                            <li class="nav-item">
+                                <a class="nav-link " asp-area="Admin" asp-controller="Order" asp-action="Index">Order</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Content Management
@@ -43,16 +48,30 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item text-dark" asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a>
                                     </li>
-
-                                    <li> <hr class="dropdown-divider bg-dark"></li>
+                                    <li><hr class="dropdown-divider bg-dark"></li>
                                     <li class="nav-item">
                                         <a class="dropdown-item text-dark" asp-area="Admin" asp-controller="Company" asp-action="Index">Company</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="dropdown-item text-dark" asp-area="Identity" asp-page="/Account/Register">Create User</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="dropdown-item text-dark" asp-area="Admin" asp-action="Index" asp-controller="User">List User</a>
                                     </li>
                                 </ul>
                             </li>
                         }
+                        
+                            <li class="nav-item">
+                                <a class="nav-link " asp-area="Customer" asp-controller="Cart" asp-action="Index">
+                                    @await Component.InvokeAsync("ShoppingCart")
+                                </a>
+                            </li>
+                        
 
                     </ul>
+
                     <partial name="_LoginPartial"/>
                 </div>
             </div>
@@ -79,6 +98,8 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://cdn.datatables.net/2.3.1/js/dataTables.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -37,12 +37,12 @@ namespace BulkyBook.DataAccess.Repository
                 objFromDb.priceProductFor100 = obj.priceProductFor100;
                 objFromDb.CategoryId = obj.CategoryId;
                 objFromDb.productDecsciption = obj.productDecsciption;
+                objFromDb.ProductImages = obj.ProductImages;
+                //if(obj.ImageUrl != null)
+                //{
+                //    objFromDb.ImageUrl = obj.ImageUrl;
 
-                if(obj.ImageUrl != null)
-                {
-                    objFromDb.ImageUrl = obj.ImageUrl;
-
-                }
+                //}
 
             }
         }

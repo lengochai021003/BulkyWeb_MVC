@@ -16,8 +16,13 @@ namespace BulkyBook.DataAccess.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Company> Companies { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public DbSet<OrderHeader> OrderHeaders { get; set; }
+
+        public DbSet<OrderDetail> OrderDetails { get; set; }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -45,7 +50,6 @@ namespace BulkyBook.DataAccess.Data
                     priceProductFor50 = 85,
                     priceProductFor100 = 80,
                     CategoryId = 1,
-                    ImageUrl=""
                 },
                 new Product
                 {
@@ -59,7 +63,6 @@ namespace BulkyBook.DataAccess.Data
                     priceProductFor50 = 25,
                     priceProductFor100 = 20,
                     CategoryId = 1,
-                    ImageUrl = ""
 
                 },
                 new Product
@@ -74,7 +77,6 @@ namespace BulkyBook.DataAccess.Data
                     priceProductFor50 = 40,
                     priceProductFor100 = 35,
                     CategoryId = 2,
-                    ImageUrl = ""
 
                 },
                 new Product
@@ -89,7 +91,6 @@ namespace BulkyBook.DataAccess.Data
                     priceProductFor50 = 60,
                     priceProductFor100 = 55,
                     CategoryId = 2,
-                    ImageUrl = ""
 
                 },
                 new Product
@@ -104,7 +105,6 @@ namespace BulkyBook.DataAccess.Data
                     priceProductFor50 = 25,
                     priceProductFor100 = 20,
                     CategoryId = 3,
-                    ImageUrl = ""
 
                 },
                 new Product
@@ -119,7 +119,6 @@ namespace BulkyBook.DataAccess.Data
                     priceProductFor50 = 22,
                     priceProductFor100 = 20,
                     CategoryId = 3,
-                    ImageUrl = ""
                 }
 
                 );
