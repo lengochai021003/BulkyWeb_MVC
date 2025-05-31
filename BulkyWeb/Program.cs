@@ -24,7 +24,6 @@ builder.Host.ConfigureAppConfiguration((context, config) =>
     }
 });
 
-builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
 builder.Services.ConfigureApplicationCookie(options =>
@@ -72,7 +71,8 @@ app.UseAuthentication();
 app.UseSession();
 SeedDatabase();
 app.UseAuthorization();
-StripeConfiguration.ApiKey=builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
+StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
+
 
 app.MapControllerRoute(
     name: "default",
